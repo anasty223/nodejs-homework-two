@@ -1,14 +1,16 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-const {DB_HOST}=require("./config")
+require("dotenv").config();
+
+global.basedir = __dirname;
+
+const { DB_HOST } = require("./config");
 const mongoose = require("mongoose");
 mongoose
   .connect(DB_HOST)
   .then(() => console.log("Database connect success"))
   .catch((error) => error.message);
-
-// gxs3mlp4CJULfD09;*/
 
 const contactsRouter = require("./routes/api/contacts");
 

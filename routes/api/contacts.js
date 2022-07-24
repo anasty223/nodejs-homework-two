@@ -1,25 +1,16 @@
-const express = require('express')
+const express = require("express");
+const { basedir } = global;
+console.log(basedir);
+const router = express.Router();
+const { ctrlWrapper } = require(`${basedir}/helpers`);
 
-const router = express.Router()
+const controller = require(`${basedir}/controllers/contacts`);
 
-router.get('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get("/", ctrlWrapper(controller.getAll));
+router.get("/:contactId", ctrlWrapper(controller.getById));
+router.post("/", ctrlWrapper(controller.createContacts));
+router.delete("/:contactId", ctrlWrapper(controller.deleteContacts));
+router.put("/:contactId", ctrlWrapper(controller.changeById));
+router.patch("/:contactId/favorite", ctrlWrapper(controller.changeFavorite));
 
-router.get('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-router.post('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-router.delete('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-router.put('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-module.exports = router
+module.exports = router;
