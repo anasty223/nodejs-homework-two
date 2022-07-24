@@ -4,7 +4,10 @@ const { createError } = require("../../helpers");
 const changeFavorite = async (req, res, next) => {
   const { error } = shemas.update.validate(req.body);
   if (error) {
-    throw createError(400, error.message);
+    res.status(400).json({
+      status: 400,
+      data: { message: "Missing field favorite" },
+    });
   }
   const { contactId } = req.params;
 
