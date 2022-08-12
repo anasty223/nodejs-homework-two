@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
+<<<<<<< Updated upstream
     "bcryptjs": "^2.4.3",
+=======
+>>>>>>> Stashed changes
     "cors": "2.8.5",
     "cross-env": "7.0.3",
     "dotenv": "^16.0.1",
